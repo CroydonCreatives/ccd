@@ -4,33 +4,41 @@ p Welcome to #{title}
 table
     thead
         tr
+            th(rowspan=2)
+                img(src="https://api.twitter.com/1/users/profile_image?screen_name=crcreatives&size=bigger")
             th Name
             th Email
             th Phone
             th Twitter
             th Location
             th Skills
+        tr
             th Available When
             th Available What
             th Websites
-            th Bio
+            th(colspan=3) Bio
     - for person in people
         tbody
             tr
+                td(rowspan=2)
+                    img(src="https://api.twitter.com/1/users/profile_image?screen_name=#{person.twitter}&size=bigger")
                 td=person.name
-                td=person.email
+                td
+                    a(href="mailto:#{person.email})=person.email
                 td=person.phone
-                td=person.twitter
+                td
+                    a(href="http://www.twitter.com/#{person.twitter}")=person.twitter
                 td=person.location
                 td
                     - each skill in person.skills
-                        a(href="/tag/#{skill}")=skill
+                        a.tag.tag-info(href="/tag/#{skill}")=skill
+            tr
                 td=person.availableWhen
                 td=person.availableWhat
                 td
                     - each website in person.websites
                         a(href="http://#{website.url}",rel="external")=website.label
-                td=person.bio
+                td(colspan=3)=person.bio
 
 script
     var people = !{JSON.stringify(people)};
