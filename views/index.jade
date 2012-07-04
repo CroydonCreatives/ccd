@@ -1,2 +1,33 @@
 h1= title
 p Welcome to #{title}
+
+table
+    thead
+        tr
+            th Name
+            th Email
+            th Phone
+            th Twitter
+            th Location
+            th Skills
+            th Available When
+            th Available What
+            th Websites
+            th Bio
+    - for person in people
+        tbody
+            tr
+                td=person.name
+                td=person.email
+                td=person.phone
+                td=person.twitter
+                td=person.location
+                td
+                    - each skill in person.skills
+                        strong=skill
+                td=person.availableWhen
+                td=person.availableWhat
+                td
+                    - each website in person.websites
+                        a(href="http://#{website.url}",rel="external")=website.label
+                td=person.bio

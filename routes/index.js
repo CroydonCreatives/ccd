@@ -1,3 +1,6 @@
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' })
+
+    var data = require('../data/people.js');
+
+    res.render('index', { title: 'Croydon Creatives Directory',people: data.people })
 };
