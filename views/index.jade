@@ -24,10 +24,13 @@ table
                 td=person.location
                 td
                     - each skill in person.skills
-                        strong=skill
+                        a(href="/tag/#{skill}")=skill
                 td=person.availableWhen
                 td=person.availableWhat
                 td
                     - each website in person.websites
                         a(href="http://#{website.url}",rel="external")=website.label
                 td=person.bio
+
+script
+    var people = !{JSON.stringify(people)};
